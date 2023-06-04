@@ -1,11 +1,10 @@
 import express from 'express';
 const app = express();
+import getPostRouter from "./routes/getPost";
 const port = 3000;
 
-app.get('/', (req, res) => {
-    console.log('Hello World!');
-    res.send('Hello World!');
-});
+app.use(express.json())
+app.use("/api", getPostRouter)
 
 app.listen(port, () => {
     return console.log(`Express is listening at http://localhost:${port}`);
